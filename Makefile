@@ -30,6 +30,9 @@ build:
 run:
 	@docker run -it --rm ${ENV_VARS} ${VOLUMES} --privileged tbcrawl ${CRAWL_PATH}/Entrypoint.sh "$(PARAMS)"
 
+runin:
+	@docker run -it --rm ${ENV_VARS} ${VOLUMES} --privileged tbcrawl
+
 stop:
 	@docker stop `docker ps -a -q -f ancestor=tbcrawl`
 	@docker rm `docker ps -a -q -f ancestor=tbcrawl`

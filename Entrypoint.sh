@@ -16,6 +16,19 @@ ethtool -K eth0 tx off rx off tso off gso off gro off lro off
 pushd ${BASE}
 pip install -U -r requirements.txt
 
+# added by Daniel: customized tbcrawler
+
+if [ -d "tor-browser-selenium" ]; then
+	rm -rf tor-browser-selenium
+fi
+	
+git clone https://github.com/s0irrlor7m/tor-browser-selenium.git
+#git clone https://github.com/webfp/tor-browser-selenium.git
+cd tor-browser-selenium
+python setup.py install
+cd ..
+
+
 # copy tor browser bundle
 rm -rf tor-browser_en-US
 cp -r /home/docker/tbb_setup/tor-browser_en-US .

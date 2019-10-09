@@ -14,3 +14,5 @@ playbook.retry
 /tor-browser_en-US/
 /*.json
 *~
+tbselenium.egg-info/
+tor-browser-selenium/

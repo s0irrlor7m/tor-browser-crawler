@@ -3,4 +3,3 @@ scapy
 psutil>=2.2.1
 pyvirtualdisplay
 selenium==3.11
-tbselenium
