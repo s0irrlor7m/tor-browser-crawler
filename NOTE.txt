@@ -1,0 +1,2 @@
+xhost +local:docker
+to enable docker container to access X server

@@ -5,7 +5,7 @@
 # globals
 PYTHON_VERSION='python2.7'
 PYTHON_PATH=`which $PYTHON_VERSION`
-TOR_VERSION='6.0.6'
+TOR_VERSION='8.5.5'
 BASE='/home/docker/tbcrawl'
 
 # set offloads
