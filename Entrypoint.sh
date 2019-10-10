@@ -33,7 +33,14 @@ cd ..
 rm -rf tor-browser_en-US
 cp -r /home/docker/tbb_setup/tor-browser_en-US .
 
+
 # TODO: do other stuff here if you need to
+
+# copy add-on to TBB
+cp /home/docker/tbcrawl/extensions/harexporttrigger@getfirebug.com.xpi /home/docker/tbcrawl/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions/
+
+
+
 
 # Run command with params
 python bin/tbcrawler.py $1
