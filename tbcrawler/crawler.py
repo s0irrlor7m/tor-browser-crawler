@@ -9,12 +9,16 @@ import utils as ut
 from dumputils import Sniffer
 from log import wl_log
 
+# added by Daniel to export HAR
+import json
+
 
 class CrawlerBase(object):
-    def __init__(self, driver, controller, screenshots=True):
+    def __init__(self, driver, controller, screenshots=True, har_export=True):
         self.driver = driver
         self.controller = controller
         self.screenshots = screenshots
+        self.har_export = har_export
 
         self.job = None
 
@@ -55,11 +59,22 @@ class CrawlerBase(object):
                 except WebDriverException as seto_exc:
                     wl_log.error("Setting soft timeout %s", seto_exc)
                 self.__do_visit()
+
                 if self.screenshots:
                     try:
                         self.driver.get_screenshot_as_file(self.job.png_file)
                     except WebDriverException:
                         wl_log.error("Cannot get screenshot.")
+
+                if self.har_export:
+                    try:
+                        jscript = "return HAR.triggerExport().then(harLog => {return harLog;});"
+                        har_string = self.driver.execute_script(jscript)
+                        with open(self.job.har_file, 'w') as fd:
+                            json.dump(har_string, fd)
+                    except WebDriverException:
+                        wl_log.error("Cannot export HAR.")
+
             sleep(float(self.job.config['pause_between_visits']))
             self.post_visit()
 
@@ -111,6 +126,10 @@ class CrawlJob(object):
     @property
     def png_file(self):
         return join(self.path, "screenshot.png")
+
+    @property
+    def har_file(self):
+        return join(self.path, "traffic.har")
 
     @property
     def instance(self):

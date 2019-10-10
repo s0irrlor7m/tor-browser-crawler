@@ -51,7 +51,7 @@ def run():
 
     # Instantiate crawler
     crawl_type = getattr(crawler_mod, "Crawler" + args.type)
-    crawler = crawl_type(driver, controller, args.screenshots)
+    crawler = crawl_type(driver, controller, args.screenshots, args.export_har)
 
     # Configure crawl
     job_config = ut.get_dict_subconfig(config, args.config, "job")
@@ -149,7 +149,10 @@ def parse_arguments():
     parser.add_argument('-s', '--screenshots', action='store_true',
                         help='Capture page screenshots',
                         default=False)
-
+    # export HAR
+    parser.add_argument('-e', '--export-har', action='store_true',
+                        help='Export HAR',
+                        default=False)
     # Limit crawl
     parser.add_argument('--start', type=int,
                         help='Select URLs from this line number: (default: 1).',
