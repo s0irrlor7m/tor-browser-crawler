@@ -22,10 +22,17 @@ VOLUMES = \
 	--volume=${HOST_SSH}:${GUEST_SSH}			\
 	--volume=`pwd`:${CRAWL_PATH}				\
 
+
+TOR_VERSION='9.0a7'
+
+
+
 PARAMS=-c wang_and_goldberg -t WebFP -u ./etc/localized-urls-100-top.csv -s -e
 
 build:
-	@docker build -t tbcrawl --rm .
+	@docker build -t tbcrawl --rm . 
+	@ python setup.py ${TOR_VERSION}	# to download TBB out of Docker (no sig check)
+	@ xhost +local:docker			# have windows forwarded
 
 run:
 	@docker run -it --rm ${ENV_VARS} ${VOLUMES} --privileged tbcrawl ${CRAWL_PATH}/Entrypoint.sh "$(PARAMS)"

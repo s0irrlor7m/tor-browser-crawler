@@ -30,8 +30,8 @@ cd ..
 
 
 # copy tor browser bundle
-rm -rf tor-browser_en-US
-cp -r /home/docker/tbb_setup/tor-browser_en-US .
+#rm -rf tor-browser_en-US
+#cp -r /home/docker/tbb_setup/tor-browser_en-US .
 
 
 # TODO: do other stuff here if you need to
