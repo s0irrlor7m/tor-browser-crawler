@@ -12,6 +12,15 @@ from pyvirtualdisplay import Display
 from common import TimeoutException
 from tbcrawler import common as cm
 
+import subprocess
+
+
+
+def throttle_upstream(bw):
+    args = ['/home/docker/tbcrawl/wondershaper/wondershaper', '-a', 'eth0', '-u', str(bw)]
+    p = subprocess.Popen(args)
+    p.wait()
+    print "wondershaper finished!"
 
 def create_dir(dir_path):
     """Create a directory if it doesn't exist."""

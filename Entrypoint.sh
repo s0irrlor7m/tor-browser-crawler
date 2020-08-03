@@ -40,7 +40,11 @@ cd ..
 cp /home/docker/tbcrawl/extensions/harexporttrigger@getfirebug.com.xpi /home/docker/tbcrawl/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions/
 
 
-
+# throttle Tor connection
+git clone https://github.com/magnific0/wondershaper.git
+# cd wondershaper
+# ./wondershaper -a eth0 -u 10
+# cd ..
 
 # Run command with params
 python bin/tbcrawler.py $1

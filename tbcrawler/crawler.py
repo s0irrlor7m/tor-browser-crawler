@@ -42,6 +42,10 @@ class CrawlerBase(object):
         restart forces to switch the entry guard.
         """
         with self.controller.launch():
+
+            # throttle upstream bandwidth, Daniel
+            ut.throttle_upstream(20)
+
             for self.job.site in xrange(len(self.job.urls)):
                 if len(self.job.url) > cm.MAX_FNAME_LENGTH:
                     wl_log.warning("URL is too long: %s" % self.job.url)
