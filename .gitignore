@@ -1,3 +1,4 @@
+decode-tor/
 *.pyc
 tags
 tbb/
