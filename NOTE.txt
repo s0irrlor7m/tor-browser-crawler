@@ -1,2 +1,6 @@
 xhost +local:docker
 to enable docker container to access X server
+
+
+# throttle:
+turn on and off in "tbcrawl/crawler.py"

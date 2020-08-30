@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install libtool li
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install python python-dev python-setuptools python-pip
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install net-tools ethtool tshark libpcap-dev
 RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install xvfb firefox-esr
+RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --yes install wondershaper
 RUN apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 

@@ -44,7 +44,7 @@ class CrawlerBase(object):
         with self.controller.launch():
 
             # throttle upstream bandwidth, Daniel
-            ut.throttle_upstream(20)
+            # ut.throttle_upstream(800)
 
             for self.job.site in xrange(len(self.job.urls)):
                 if len(self.job.url) > cm.MAX_FNAME_LENGTH:
