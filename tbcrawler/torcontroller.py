@@ -83,6 +83,12 @@ class TorController(object):
 
         print("Tor config: %s" % self.torrc_dict)
         # the following may raise, make sure it's handled
+        
+        if 0:
+            # check environmental variable, -SDL
+            print environ["TOR_CIRCUIT_KEY_EXPORT"]
+            print environ["TOR_SSL_KEY_EXPORT"]
+
         self.tor_process = stem.process.launch_tor_with_config(
             config=self.torrc_dict,
             init_msg_handler=self.tor_log_handler,

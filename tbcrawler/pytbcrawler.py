@@ -5,6 +5,7 @@ import traceback
 from contextlib import contextmanager
 from logging import INFO, DEBUG
 from os import stat, chdir
+import os   # to modify environment variables, -SDL
 from os.path import isfile, join, basename
 from shutil import copyfile
 from sys import maxsize, argv
@@ -24,6 +25,11 @@ from torcontroller import TorController
 def run():
     # build dirs
     build_crawl_dirs()
+    
+    # setup environment variables for exporting keys
+    os.environ['TOR_CIRCUIT_KEY_EXPORT'] = cm.CRAWL_DIR + "/circuit-key.txt"
+    os.environ['TOR_SSL_KEY_EXPORT'] = cm.CRAWL_DIR + "/ssl-key.txt"
+
 
     # Parse arguments
     args, config = parse_arguments()
